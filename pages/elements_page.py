@@ -16,8 +16,8 @@ class TextBoxPage(BasePage):
         time.sleep(5)
 
     def check_filled_form(self):
-        full_name = self.element_is_visible(self.locators.CREATED_FULL_NAME).text
-        email = self.element_is_visible(self.locators.CREATED_EMAIL).text
-        current_address = self.element_is_visible(self.locators.CREATED_CURRENT_ADDRESS).text
-        permanent_address = self.element_is_visible(self.locators.CURRENT_PERMANENT_ADDRESS).text
+        full_name = self.element_is_visible(self.locators.CREATED_FULL_NAME).text.split(':')[1]
+        email = self.element_is_visible(self.locators.CREATED_EMAIL).text.split(':')[1]
+        current_address = self.element_is_visible(self.locators.CREATED_CURRENT_ADDRESS).text.split(':')[1]
+        permanent_address = self.element_is_visible(self.locators.CURRENT_PERMANENT_ADDRESS).text.split(':')[1]
         return full_name, email, current_address, permanent_address
