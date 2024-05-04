@@ -8,6 +8,6 @@ from selenium import webdriver
 def driver():
     driver = webdriver.Chrome()
     driver.maximize_window()
-    time.sleep(2)
+    time.sleep(3)
     yield driver
     driver.quit()
