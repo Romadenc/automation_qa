@@ -3,6 +3,7 @@ import time
 from locators.elements_page_locators import TextBoxPageLocators
 from pages.base_page import BasePage
 
+
 class TextBoxPage(BasePage):
     locators = TextBoxPageLocators()
 
@@ -14,8 +15,9 @@ class TextBoxPage(BasePage):
         self.element_is_visible(self.locators.SUBMIT).click()
         time.sleep(5)
 
-
-
-
-
-
+    def check_filled_form(self):
+        full_name = self.element_is_visible(self.locators.CREATED_FULL_NAME).text
+        email = self.element_is_visible(self.locators.CREATED_EMAIL).text
+        current_address = self.element_is_visible(self.locators.CREATED_CURRENT_ADDRESS).text
+        permanent_address = self.element_is_visible(self.locators.CURRENT_PERMANENT_ADDRESS).text
+        return full_name, email, current_address, permanent_address
