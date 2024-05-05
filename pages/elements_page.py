@@ -19,8 +19,7 @@ class TextBoxPage(BasePage):
         self.element_is_visible(self.locators.EMAIL).send_keys(email)
         self.element_is_visible(self.locators.CURRENT_ADDRESS).send_keys(current_address)
         self.element_is_visible(self.locators.PERMANENT_ADDRESS).send_keys(permanent_address)
-        submit_button = self.element_is_visible(self.locators.SUBMIT)
-        self.go_to_element(submit_button)
+        self.element_is_visible(self.locators.SUBMIT).click()
         return full_name, email, current_address, permanent_address
 
     def check_filled_form(self):
