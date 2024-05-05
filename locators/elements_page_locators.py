@@ -15,3 +15,8 @@ class TextBoxPageLocators:
     CREATED_EMAIL = (By.CSS_SELECTOR, '#output #email')
     CREATED_CURRENT_ADDRESS =(By.CSS_SELECTOR, '#output #currentAddress')
     CURRENT_PERMANENT_ADDRESS = (By.CSS_SELECTOR, '#output #permanentAddress')
+
+class CheckBoxPageLocators:
+
+    EXPAND_ALL_BUTTON = (By.CSS_SELECTOR,"button[title='Expand all']")
+    ITEM_LIST = (By.CSS_SELECTOR,)
