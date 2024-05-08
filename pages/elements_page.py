@@ -1,4 +1,4 @@
-
+from selenium.webdriver.common.by import By
 import random
 from generator.generator import generated_person
 from locators.elements_page_locators import TextBoxPageLocators, CheckBoxPageLocators
@@ -38,6 +38,7 @@ class CheckBoxPage(BasePage):
 
     def click_random_checkbox(self):
         item_list = self.elements_are_visible(self.locators.ITEM_LIST)
+
         count = 21
         while count != 0:
             item = item_list[random.randint(1, 15)]
@@ -53,5 +54,15 @@ class CheckBoxPage(BasePage):
         checked_list = self.elements_are_present(self.locators.CHECKED_ITEMS)
         data = []
         for box in checked_list:
-            title_item = box.find_element(self.locators.TITLE_ITEM)
-            print(title_item.text)
+            title_item = box.find_element(By.XPATH, self.locators.TITLE_ITEM)
+            data.append(title_item.text)
+        return str(data).replace(' ', '').replace('doc','').replace('.','').lower()
+
+    def get_output_result(self):
+        result_list = self.elements_are_present(self.locators.OUTPUT_RESULT)
+        data = []
+        for item in result_list:
+            data.append(item.text)
+        return str(data).lower().replace(' ','')
+
+
