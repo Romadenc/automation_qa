@@ -1,5 +1,5 @@
 import pytest
-from pages.elements_page import TextBoxPage, CheckBoxPage
+from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 
@@ -26,5 +26,18 @@ class TestElements:
             input_checkbox = check_box_page.get_checked_checkboxes()
             output_checkbox = check_box_page.get_output_result()
             assert input_checkbox == output_checkbox, 'checkboxes have not been selected'
+
+    class TestRadioButton:
+        def test_radio_button(self, driver):
+            radio_button_page = RadioButtonPage(driver, 'https://demoqa.com/radio-button')
+            radio_button_page.open()
+            radio_button_page.click_on_the_radio_button('yes')
+            output_yes = radio_button_page.get_output_result()
+
+            assert output_yes == 'Yes', f"Expected 'Yes',but got {output_yes}"
+            radio_button_page.click_on_the_radio_button('impressive')
+
+            output_impressive = radio_button_page.get_output_result()
+            assert output_impressive == 'Impressive',f"Expected 'Yes',but got {output_impressive}"
 
 
