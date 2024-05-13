@@ -52,7 +52,20 @@ class WebTablePageLocators:
     COUNT_ROW_LIST = (By.CSS_SELECTOR,'select[aria-label="rows per page"]')
 
     #update
-    UPDATE_BUTTON =  (By.CSS_SELECTOR, 'span[title="Edit"]')
+    UPDATE_BUTTON = (By.CSS_SELECTOR, 'span[title="Edit"]')
+
+
+class ButtonsPageLocators:
+
+    DOUBLE_BUTTON = (By.CSS_SELECTOR, 'button[id="doubleClickBtn"]')
+    RIGHT_CLICK_BUTTON = (By.CSS_SELECTOR, 'button[id="rightClickBtn"]')
+    CLICK_ME_BUTTON = (By.XPATH, '//div[3]/button')
+
+    #result
+    SUCCESSFUL_DOUBLE = (By.CSS_SELECTOR, 'p[id="doubleClickMessage"]')
+    SUCCESSFUL_RIGHT_CLICK = (By.CSS_SELECTOR, 'p[id="rightClickMessage"]')
+    SUCCESSFUL_CLICK_ME = (By.CSS_SELECTOR, 'p[id="dynamicClickMessage"]')
+
 
 
 

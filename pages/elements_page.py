@@ -1,8 +1,9 @@
 from selenium.webdriver.common.by import By
 import random
 from generator.generator import generated_person
-from locators.elements_page_locators import TextBoxPageLocators, CheckBoxPageLocators, RadioButtonLocators, \
-    WebTablePageLocators
+from locators.elements_page_locators import (TextBoxPageLocators, CheckBoxPageLocators, RadioButtonLocators,
+                                             WebTablePageLocators,
+                                             ButtonsPageLocators)
 from pages.base_page import BasePage
 
 
@@ -148,4 +149,36 @@ class WebTablePage(BasePage):
 
     def check_count_rows(self):
         list_rows = self.elements_are_present(self.locators.FULL_PEOPLE_LIST)
-        return  len(list_rows)
+        return len(list_rows)
+
+
+class ButtonsPage(BasePage):
+    locators = ButtonsPageLocators()
+
+    def click_on_different_button(self,type_click):
+        if type_click == "double":
+            btn = (self.element_is_clickable(self.locators.DOUBLE_BUTTON))
+            self.go_to_element(btn)
+            self.action_double_click(btn)
+            return self.check_clicked_button(self.locators.SUCCESSFUL_DOUBLE)
+
+        if type_click == "right":
+            btn=(self.element_is_clickable(self.locators.RIGHT_CLICK_BUTTON))
+            self.go_to_element(btn)
+            self.action_right_click(btn)
+            return self.check_clicked_button(self.locators.SUCCESSFUL_RIGHT_CLICK)
+
+        if type_click == "click":
+            btn = self.element_is_clickable(self.locators.CLICK_ME_BUTTON)
+            self.go_to_element(btn)
+            btn.click()
+            return self.check_clicked_button(self.locators.SUCCESSFUL_CLICK_ME)
+
+    def check_clicked_button(self,element):
+        return self.element_is_present(element).text
+
+
+
+
+
+
