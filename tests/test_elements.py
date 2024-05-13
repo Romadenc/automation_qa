@@ -1,6 +1,6 @@
 import random
 import time
-from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage
+from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage, LinksPage
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 
@@ -92,6 +92,20 @@ class TestElements:
             assert double == "You have done a double click", "The double click button was not pressed"
             assert right == "You have done a right click", "The right click button was not pressed"
             assert click == "You have done a dynamic click", "The click_me button was not pressed"
+
+    class TestLinksPage:
+        def test_check_link(self,driver):
+            links_page = LinksPage(driver, 'https://demoqa.com/links')
+            links_page.open()
+            href_link, current_url = links_page.check_new_tab_simple_link()
+            print(href_link,current_url)
+            assert href_link == current_url, "the link is broken or url is incorrect"
+
+        def test_broken_link(self,driver):
+            links_page = LinksPage(driver, 'https://demoqa.com/links')
+            links_page.open()
+            response_code = links_page.check_broken_links('https://demoqa.com/bad-request')
+            assert response_code == 400, "the link works"
 
 
 
