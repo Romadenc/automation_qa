@@ -70,6 +70,13 @@ class LinksPageLocators:
     SIMPLE_LINK = (By.CSS_SELECTOR,'a[id="simpleLink"]')
     BAD_REQUEST = (By.CSS_SELECTOR, 'a[id="bad-request"]')
 
+class DynamicPropertiesPageLocators:
+
+    COLOR_CHANGE_BUTTON = (By.CSS_SELECTOR,  'button[id="colorChange"]')
+    VISIBLE_AFTER_FIVE_SEC_BUTTON = (By.CSS_SELECTOR,  'button[id="visibleAfter"]')
+    ENABLE_BUTTON = (By.CSS_SELECTOR, 'button[id="enableAfter"]')
+
+
 
 
 
