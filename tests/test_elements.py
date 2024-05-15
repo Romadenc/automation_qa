@@ -1,6 +1,7 @@
 import random
 import time
-from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage, LinksPage
+from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage, LinksPage, \
+    DynamicPropertiesPage
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 
@@ -98,7 +99,6 @@ class TestElements:
             links_page = LinksPage(driver, 'https://demoqa.com/links')
             links_page.open()
             href_link, current_url = links_page.check_new_tab_simple_link()
-            print(href_link,current_url)
             assert href_link == current_url, "the link is broken or url is incorrect"
 
         def test_broken_link(self,driver):
@@ -106,6 +106,27 @@ class TestElements:
             links_page.open()
             response_code = links_page.check_broken_links('https://demoqa.com/bad-request')
             assert response_code == 400, "the link works"
+
+    class TestDynamicProperties:
+        def test_dynamic_properties(self,driver):
+            dynamic_page = DynamicPropertiesPage(driver,'https://demoqa.com/dynamic-properties')
+            dynamic_page.open()
+            color_before,color_after = dynamic_page.check_changed_of_color()
+            assert color_before != color_after, 'same colors'
+
+        def test_apper_button(self,driver):
+            dynamic_page = DynamicPropertiesPage(driver, 'https://demoqa.com/dynamic-properties')
+            dynamic_page.open()
+            apper = dynamic_page.check_appear_button()
+            assert apper is True, "no button appeared after 5 sec"
+
+        def test_enable_button(self,driver):
+            dynamic_page = DynamicPropertiesPage(driver, 'https://demoqa.com/dynamic-properties')
+            dynamic_page.open()
+            enable = dynamic_page.check_enable_button()
+            assert enable is True, "button is not clickable after 5 sec"
+
+
 
 
 
